@@ -1,6 +1,7 @@
 ---
 name: vorim
 description: AI agent identity, permissions, trust scores, and audit trails via Vorim AI. Gives your OpenClaw agent a cryptographic identity so every action is verified, permissioned, and logged.
+license: MIT-0
 metadata:
   openclaw:
     primaryEnv: VORIM_API_KEY
@@ -13,6 +14,8 @@ metadata:
       - trust
       - audit
       - permissions
+    homepage: https://vorim.ai
+    repository: https://github.com/Kzino/vorim-openclaw-skill
 ---
 
 # Vorim AI — Agent Identity & Trust
