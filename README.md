@@ -99,6 +99,19 @@ If you run OpenClaw agents that browse the web, run shell commands, send emails,
 
 Vorim adds the missing layer. Every agent action is identified, scoped, and logged in a way that's verifiable by you, by your security team, or by a regulator — without trusting any single vendor's database.
 
+## Note on ClawHub's "high-impact capability" flag
+
+ClawHub's automated security scanner flags this skill as "high-impact" because it declares two things that malicious skills also declare: an environment variable requirement (`VORIM_API_KEY`) and an external binary dependency (`mcporter`). The same signal triggers on roughly half of all ClawHub skills, including legitimate security tools.
+
+Here's the honest breakdown of why those declarations exist:
+
+- `VORIM_API_KEY` — your Vorim API key, used only to authenticate with `https://api.vorim.ai`. The skill never reads, copies, or transmits any other environment variable. The full source is open at [github.com/Kzino/vorim-openclaw-skill](https://github.com/Kzino/vorim-openclaw-skill) and the upstream MCP server at [github.com/Kzino/vorim-mcp-server](https://github.com/Kzino/vorim-mcp-server).
+- `mcporter` — used to run the Vorim MCP server (`@vorim/mcp-server` on npm). Nothing else.
+
+The skill is MIT-0 licensed and every file in the repo is public. If you'd like to verify before installing, read the [SKILL.md](skills/vorim/SKILL.md), the [MCP server source](https://github.com/Kzino/vorim-mcp-server/tree/main/src), and the [VAIP protocol spec](https://github.com/Kzino/vorim-protocol).
+
+If you spot anything wrong — security, accuracy, or otherwise — please open an issue or email [kwame@vorim.ai](mailto:kwame@vorim.ai). Vorim is built by a solo founder; honest feedback is taken seriously.
+
 ## Links
 
 - **Platform:** [vorim.ai](https://vorim.ai)
